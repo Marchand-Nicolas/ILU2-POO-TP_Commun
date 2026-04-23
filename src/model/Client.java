@@ -5,10 +5,8 @@ public class Client {
 	private String prenom;
 	private String adresseMail;
 	private String mdp;
-
-//	A décommenter pour la question6
-//	private Reservation[] reservations = new Reservation[100]; 
-//	private int nbReservation = 0;
+	private Reservation[] reservations = new Reservation[100];
+	private int nbReservation = 0;
 
 	public Client(String nom, String prenom, String adresseMail, String mdp) {
 		this.nom = nom;
@@ -25,12 +23,18 @@ public class Client {
 		return mdp.equals(this.mdp);
 	}
 
-//	A décommenter pour la question6
-//	public void ajouterReservation(Reservation reservation) {
-//		this.reservations[nbReservation] = reservation;
-//		nbReservation++;
-//	}
-	
+	public void ajouterReservation(Reservation reservation) {
+		this.reservations[nbReservation] = reservation;
+		nbReservation++;
+	}
+
+	public Reservation getDerniereReservation() {
+		if (nbReservation == 0) {
+			return null;
+		}
+		return reservations[nbReservation - 1];
+	}
+
 	// UNIQUEMENT POUR VERIFICATION
 	@Override
 	public String toString() {
